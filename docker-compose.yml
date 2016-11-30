@@ -1,0 +1,37 @@
+version: "2"
+services:
+  mysql:
+    image: mariadb
+    container_name: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=test
+      - MYSQL_DATABASE=mybb2
+    expose:
+      - 3306
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    depends_on:
+      - mysql
+    environment:
+      - PMA_HOST=mysql
+      - PMA_USER=root
+      - PMA_PASSWORD=test
+    ports:
+      - "8081:80"
+
+  mybb2:
+    build: .
+    container_name: mybb2
+    depends_on:
+      - mysql
+    environment:
+      - APP_DEBUG=true
+      - APP_KEY="9rs'V!n8r/rsTPXk"
+      - DB_HOST=mysql
+      - DB_DATABASE=mybb2
+      - DB_USERNAME=root
+      - DB_PASSWORD=test
+    ports:
+      - "8080:80"
