@@ -28,7 +28,7 @@ services:
       - mysql
     environment:
       - APP_DEBUG=true
-      - APP_KEY="9rs'V!n8r/rsTPXk"
+      - APP_KEY="m8q:\H5FqH#ej7Nn-fwN\aM[dp#b>=7v"
       - DB_HOST=mysql
       - DB_DATABASE=mybb2
       - DB_USERNAME=root
